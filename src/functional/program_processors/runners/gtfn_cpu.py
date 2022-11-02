@@ -83,3 +83,6 @@ class GTFNExecutor(ppi.ProgramExecutor):
 
 
 run_gtfn: Final[ppi.ProgramProcessor[None, ppi.ProgramExecutor]] = GTFNExecutor(name="run_gtfn")
+run_gtfn_persistent: Final[ppi.ProgramProcessor[None, ppi.ProgramExecutor]] = GTFNExecutor(
+    name="run_gtfn_local", cache_strategy=cache.Strategy.PERSISTENT
+)
