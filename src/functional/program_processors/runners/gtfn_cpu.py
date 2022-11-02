@@ -41,6 +41,7 @@ class GTFNExecutor(ppi.ProgramExecutor):
     builder_factory: compiler.BuildSystemProjectGenerator = compiledb.CompiledbFactory()
 
     name: Optional[str] = None
+    cache_strategy: cache.Strategy = cache.Strategy.SESSION
 
     def __call__(self, program: itir.FencilDefinition, *args: Any, **kwargs: Any) -> None:
         """
@@ -64,7 +65,7 @@ class GTFNExecutor(ppi.ProgramExecutor):
             .chain(pybind.bind_source)
             .chain(
                 compiler.Compiler(
-                    cache_strategy=cache.Strategy.PERSISTENT, builder_factory=self.builder_factory
+                    cache_strategy=self.cache_strategy, builder_factory=self.builder_factory
                 )
             )
             .chain(convert_args)
