@@ -31,7 +31,9 @@ class Strategy(enum.Enum):
 _session_cache_dir = tempfile.TemporaryDirectory(prefix="gt4py_session_")
 
 _session_cache_dir_path = pathlib.Path(_session_cache_dir.name)
-_persistent_cache_dir_path = pathlib.Path(tempfile.gettempdir()) / "gt4py_cache"
+_persistent_cache_dir_path = pathlib.Path(
+    "/home/magdalena/Projects/exclaim/fortran_stuff/py4f/src/python_overhead/gt4py_cache"
+)
 
 
 def _serialize_param(
